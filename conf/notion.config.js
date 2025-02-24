@@ -14,7 +14,7 @@ module.exports = {
     type_menu: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE_MENU || 'Menu', // 当type文章类型与此值相同时，为菜单。
     type_sub_menu:
       process.env.NEXT_PUBLIC_NOTION_PROPERTY_TYPE_SUB_MENU || 'SubMenu', // 当type文章类型与此值相同时，为子菜单。
-    title: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TITLE || 'title', // 文章标题
+    title: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TITLE || '标题', // 文章标题
     status: process.env.NEXT_PUBLIC_NOTION_PROPERTY_STATUS || 'status',
     status_publish:
       process.env.NEXT_PUBLIC_NOTION_PROPERTY_STATUS_PUBLISH || 'Published', // 当status状态值与此相同时为发布，可以为中文
@@ -22,9 +22,9 @@ module.exports = {
       process.env.NEXT_PUBLIC_NOTION_PROPERTY_STATUS_INVISIBLE || 'Invisible', // 当status状态值与此相同时为隐藏发布，可以为中文 ， 除此之外其他页面状态不会显示在博客上
     summary: process.env.NEXT_PUBLIC_NOTION_PROPERTY_SUMMARY || 'summary',
     slug: process.env.NEXT_PUBLIC_NOTION_PROPERTY_SLUG || 'slug',
-    category: process.env.NEXT_PUBLIC_NOTION_PROPERTY_CATEGORY || 'category',
-    date: process.env.NEXT_PUBLIC_NOTION_PROPERTY_DATE || 'date',
-    tags: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TAGS || 'tags',
+    category: process.env.NEXT_PUBLIC_NOTION_PROPERTY_CATEGORY || '分类',
+    date: process.env.NEXT_PUBLIC_NOTION_PROPERTY_DATE || '更新日期',
+    tags: process.env.NEXT_PUBLIC_NOTION_PROPERTY_TAGS || '标签',
     icon: process.env.NEXT_PUBLIC_NOTION_PROPERTY_ICON || 'icon',
     ext: process.env.NEXT_PUBLIC_NOTION_PROPERTY_EXT || 'ext' // 扩展字段，存放json-string，用于复杂业务
   },
