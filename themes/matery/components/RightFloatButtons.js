@@ -12,7 +12,8 @@ export default function RightFloatButtons(props) {
   return <div className="bottom-40 right-2 fixed justify-end space-y-2 z-20">
         <FloatDarkModeButton />
         <JumpToTopButton />
-        <SocialButton />
+        {/* 隐藏 SocialButton */}
+        {/* <SocialButton /> */}
         {/* 可扩展的右下角悬浮 */}
         {floatRightBottom}
     </div>
