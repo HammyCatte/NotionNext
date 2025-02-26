@@ -302,8 +302,10 @@ const LayoutSlug = props => {
         {/* 底部公告 */}
         <Announcement {...props} />
 
-        {/* 右侧文章目录 */}
+        {/*
+        右侧文章目录（隐藏）
         <CatalogWrapper post={post} />
+        */}
       </div>
     </>
   )
