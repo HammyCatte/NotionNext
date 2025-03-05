@@ -24,6 +24,18 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
     post?.pageCoverThumbnail
   const delay = (index % 3) * 300
 
+  const handleClick = (e, href) => {
+    // 如果用户使用组合键点击（新标签页打开），不处理
+    if (e.ctrlKey || e.metaKey || e.shiftKey) {
+      return
+    }
+    
+    // 普通点击：保存滚动位置并跳转
+    e.preventDefault()
+    sessionStorage.setItem('scrollPos', window.scrollY)
+    window.location.href = href
+  }
+
   return (
     <div
       data-aos='zoom-in'
@@ -37,7 +49,12 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
         {/* 头部图片 填充卡片 */}
         {showPageCover && (
           <Link href={post?.href} passHref legacyBehavior>
-            <div className='flex flex-grow w-full relative duration-200 = rounded-t-md cursor-pointer transform overflow-hidden'>
+            {/* 修改点：添加点击事件处理 */}
+            <a 
+              className='flex flex-grow w-full relative duration-200 rounded-t-md cursor-pointer transform overflow-hidden'
+              onClick={(e) => handleClick(e, post?.href)}
+              aria-label={post.title}
+            >
               <LazyImage
                 src={post?.pageCoverThumbnail}
                 alt={post.title}
@@ -53,7 +70,7 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
               <div className='h-1/2 w-full absolute left-0 bottom-0 z-20 opacity-75 transition-all duration-200'>
                 <div className='h-full w-full absolute bg-gradient-to-b from-transparent to-black'></div>
               </div>
-            </div>
+            </a>
           </Link>
         )}
 
