@@ -55,10 +55,43 @@ const LayoutBase = props => {
   const { children, post } = props
   const { fullWidth } = useGlobal()
   const router = useRouter()
+
   // 加载wow动画
   useEffect(() => {
     loadWowJS()
   }, [])
+
+  // 添加滚动位置记忆逻辑
+  useEffect(() => {
+    // 恢复滚动位置
+    const restoreScroll = () => {
+      const savedPos = sessionStorage.getItem('scrollPos')
+      if (savedPos) {
+        window.scrollTo(0, parseInt(savedPos))
+        sessionStorage.removeItem('scrollPos')
+      }
+    }
+
+    // 页面加载时恢复
+    restoreScroll()
+
+    // 监听浏览器前进/后退
+    window.addEventListener('popstate', restoreScroll)
+
+    // 路由变化前保存位置
+    const handleRouteChange = () => {
+      sessionStorage.setItem('scrollPos', window.scrollY)
+    }
+
+    router.events.on('routeChangeStart', handleRouteChange)
+
+    // 清理事件监听
+    return () => {
+      window.removeEventListener('popstate', restoreScroll)
+      router.events.off('routeChangeStart', handleRouteChange)
+    }
+  }, [router])
+
   const containerSlot =
     router.route === '/' ? (
       <Announcement {...props} />
